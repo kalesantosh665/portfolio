@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Wings of Aero</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0066cc;
+            --secondary: #003366;
+            --accent: #ff6600;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            padding-top: 80px; /* For fixed header */
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .primary-btn {
+            background-color: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+        }
+        
+        .primary-btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+        }
+        
+        .secondary-btn {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .secondary-btn:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 0;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .navbar ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .navbar ul li {
+            margin-left: 30px;
+        }
+        
+        .navbar ul li a {
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .navbar ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .navbar ul li a:hover:after,
+        .navbar ul li a.active:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .page-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+        
+        .page-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Our Story Section */
+        .our-story {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 30px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -12px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -12px;
+        }
+        
+        .timeline-year {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--light);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        /* Mission & Values */
+        .mission-values {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .value-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .value-card h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        /* Team Section */
+        .team-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .team-member {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-member h3 {
+            margin-bottom: 5px;
+            color: var(--secondary);
+        }
+        
+        .team-member p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease;
+        }
+        
+        .footer-col ul li a:hover {
+            color: white;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .contact-info i {
+            margin-right: 15px;
+            color: var(--primary);
+            margin-top: 3px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .newsletter-form input {
+            padding: 12px 15px;
+            border-radius: 4px;
+            border: none;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .footer-legal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-legal a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* New Additional Sections */
+        .company-overview {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .overview-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .overview-image {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .overview-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .overview-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .technology-section {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .tech-card {
+            padding: 30px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .tech-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .awards-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .award-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            background-color: var(--light);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .award-logo {
+            height: 80px;
+            margin-bottom: 20px;
+            object-fit: contain;
+        }
+
+        .testimonials-section {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 0 15px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .testimonial-text:before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.2;
+            position: absolute;
+            top: -20px;
+            left: -15px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Facilities Section */
+        .facilities-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .facility-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .facility-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .facility-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .facility-card:hover .facility-image img {
+            transform: scale(1.05);
+        }
+
+        .facility-content {
+            padding: 25px;
+            background-color: white;
+        }
+
+        .facility-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* Partnerships Section */
+        .partnerships-section {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .partner-logo {
+            height: 60px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .partner-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .header .container {
+                flex-wrap: wrap;
+            }
+            
+            .navbar {
+                width: 100%;
+                order: 3;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            .navbar.active {
+                display: block;
+            }
+            
+            .navbar ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .navbar ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .page-hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .overview-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .overview-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .timeline-item:nth-child(odd)::after {
+                right: auto;
+                left: 21px;
+            }
+            
+            .page-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .overview-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .partner-logos {
+                gap: 20px;
+            }
+
+            .partner-logo {
+                height: 40px;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="https://wingsofaero.in/wp-content/uploads/2023/03/oie_transparent-300x63.png" alt="Wings of Aero Logo">
+            </a>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <a href="contact.html" class="btn primary-btn">Get in Touch</a>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Hero Section -->
+    <section class="page-hero about-hero">
+        <div class="container">
+            <h1>About Wings of Aero</h1>
+            <p>Innovating the future of aerospace technology through research, development, and education</p>
+        </div>
+    </section>
+
+    <!-- Company Overview Section -->
+    <section class="company-overview">
+        <div class="container">
+            <div class="overview-content">
+                <div class="overview-text">
+                    <h2>Leading Aerospace Innovators</h2>
+                    <p>Founded in 2015, Wings of Aero has grown from a passionate startup to a recognized leader in aerospace technology. Our journey began with a small team of engineers and aviation enthusiasts who shared a common vision: to make cutting-edge aerospace technology accessible to everyone.</p>
+                    <p>Today, we operate state-of-the-art research facilities in Bangalore and Hyderabad, collaborating with leading academic institutions and industry partners worldwide. Our interdisciplinary approach combines aerospace engineering with artificial intelligence, materials science, and sustainable energy solutions.</p>
+                    
+                    <div class="overview-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Completed Projects</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Patents Filed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2000+</div>
+                            <div class="stat-label">Students Trained</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">25</div>
+                            <div class="stat-label">Team Members</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="overview-image">
+                    <img src="https://images.unsplash.com/photo-1506947411487-a56738267384?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Wings of Aero team working on drone technology">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="our-story">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Story</h2>
+                <p>From humble beginnings to aerospace innovators</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2015</div>
+                    <div class="timeline-content">
+                        <h3>Founded with a Vision</h3>
+                        <p>Established by a team of aerospace enthusiasts with a mission to make advanced aerospace technology accessible to students and professionals alike. Our first office was a small garage in Bangalore with just three team members.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2017</div>
+                    <div class="timeline-content">
+                        <h3>First Commercial UAV Project</h3>
+                        <p>Successfully completed our first commercial UAV design for agricultural monitoring, marking our entry into the professional aerospace sector. This project helped farmers increase crop yields by 18%.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2019</div>
+                    <div class="timeline-content">
+                        <h3>Research Partnership Established</h3>
+                        <p>Formed strategic partnerships with leading technical universities to advance aerospace research and development. Launched our first joint research program on sustainable aviation fuels.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h3>Pandemic Response</h3>
+                        <p>Developed drone delivery systems for medical supplies during the COVID-19 pandemic, serving remote communities across three states and delivering over 5,000 critical packages.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <h3>National Recognition</h3>
+                        <p>Awarded "Most Innovative Aerospace Startup" by the Indian Aerospace Association for our work in drone technology education and our hybrid propulsion system innovations.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h3>Global Expansion</h3>
+                        <p>Opened our first international office in Singapore and partnered with three European aerospace firms to develop next-generation urban air mobility solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Values Section -->
+    <section class="mission-values">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Mission & Values</h2>
+                <p>The principles that guide everything we do</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We push boundaries and challenge conventional thinking to develop groundbreaking aerospace solutions that redefine what's possible in aviation and space technology.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Education</h3>
+                    <p>Committed to nurturing the next generation of aerospace professionals through hands-on learning, mentorship programs, and accessible training resources.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Safety</h3>
+                    <p>All our designs and operations prioritize safety above all else, meeting stringent industry standards and implementing redundant safety systems in all our technologies.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustainability</h3>
+                    <p>Developing eco-friendly aerospace technologies that minimize environmental impact, from electric propulsion systems to biodegradable composite materials.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Collaboration</h3>
+                    <p>We believe in the power of teamwork, both within our organization and through partnerships with academia, industry, and government agencies.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Global Impact</h3>
+                    <p>Designing solutions that address worldwide challenges, from climate change to transportation accessibility, with technologies that serve communities everywhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="technology-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Technology</h2>
+                <p>Pioneering solutions that redefine aerospace possibilities</p>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fas fa-fan"></i>
+                    </div>
+                    <h3>Advanced Propulsion Systems</h3>
+                    <p>Our hybrid-electric propulsion technology delivers 40% greater efficiency than conventional systems while reducing emissions by 60%. The modular design allows for easy maintenance and upgrades.</p>
+                </div>
+                
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI Flight Control</h3>
+                    <p>Proprietary machine learning algorithms enable autonomous decision-making in complex flight environments with 99.9% reliability. Our systems continuously learn and adapt to new scenarios.</p>
+                </div>
+                
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Cybersecurity</h3>
+                    <p>Military-grade encryption and blockchain-based communication protocols ensure complete data security for all our systems. Regular penetration testing maintains our robust security standards.</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <h3>Energy Storage</h3>
+                    <p>Our proprietary battery technology offers 3x the energy density of conventional lithium-ion batteries, with faster charging times and improved thermal stability for aerospace applications.</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fas fa-satellite"></i>
+                    </div>
+                    <h3>Communication Systems</h3>
+                    <p>Next-gen mesh networking enables seamless communication between aircraft and ground stations, even in remote areas with limited infrastructure.</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h3>Sustainable Materials</h3>
+                    <p>We've developed lightweight composite materials using recycled carbon fiber and plant-based resins, reducing the environmental impact of aircraft manufacturing by up to 45%.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="facilities-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Facilities</h2>
+                <p>State-of-the-art infrastructure for aerospace innovation</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="facility-card">
+                        <div class="facility-image">
+                            <img src="https://bl-i.thgim.com/public/incoming/esgda/article67687254.ece/alternates/LANDSCAPE_1200/PTI12_29_2023_000142B.jpg" alt="Research and Development Center">
+                        </div>
+                        <div class="facility-content">
+                            <h3>Bangalore R&D Center</h3>
+                            <p>Our 25,000 sq ft research hub features advanced wind tunnels, materials testing labs, and one of India's largest drone development facilities. The center operates 24/7 with a team of 50 researchers.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="facility-card">
+                        <div class="facility-image">
+                            <img src="https://img.etimg.com/thumb/width-1200,height-900,imgsize-352080,resizemode-75,msid-117486433/news/defence/jsw-defence-signs-mou-with-telangana-for-rs-800-crore-uav-manufacturing-plant.jpg" alt="Manufacturing Facility">
+                        </div>
+                        <div class="facility-content">
+                            <h3>Hyderabad Manufacturing Plant</h3>
+                            <p>A fully automated production facility capable of manufacturing up to 200 UAVs per month. The plant features robotic assembly lines and rigorous quality control systems meeting ISO 9001 and AS9100 standards.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="facility-card">
+                        <div class="facility-image">
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Training Academy">
+                        </div>
+                        <div class="facility-content">
+                            <h3>Aero Academy</h3>
+                            <p>Our education center features flight simulators, VR training systems, and hands-on workshops. Over 2,000 students have graduated from our programs, with 85% securing positions in the aerospace industry.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="facility-card">
+                        <div class="facility-image">
+                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Test Range">
+                        </div>
+                        <div class="facility-content">
+                            <h3>Chennai Test Range</h3>
+                            <p>A 500-acre secured facility for flight testing and certification. The range includes multiple landing zones, obstacle courses, and all-weather testing capabilities approved by DGCA.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet Our Team</h2>
+                <p>The brilliant minds behind our aerospace innovations</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr. Arjun Patel">
+                    <h3>Dr. Arjun Patel</h3>
+                    <p>Founder & CEO</p>
+                    <p class="team-bio">Former ISRO scientist with 15+ years in propulsion systems. PhD in Aerospace Engineering from IIT Bombay.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya Sharma">
+                    <h3>Priya Sharma</h3>
+                    <p>Head of Engineering</p>
+                    <p class="team-bio">Expert in autonomous systems with experience at Boeing and Airbus. Leads our AI flight control development.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Rahul Verma">
+                    <h3>Rahul Verma</h3>
+                    <p>Chief Instructor</p>
+                    <p class="team-bio">Former Air Force pilot with 3,000+ flight hours. Develops our training curriculum and safety protocols.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ananya Gupta">
+                    <h3>Ananya Gupta</h3>
+                    <p>Research Director</p>
+                    <p class="team-bio">Materials science specialist focusing on sustainable composites. Holder of 5 patents in aerospace materials.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Vikram Joshi">
+                    <h3>Vikram Joshi</h3>
+                    <p>CTO</p>
+                    <p class="team-bio">Electrical systems expert leading our propulsion technology development. Former Tesla battery engineer.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Neha Reddy">
+                    <h3>Neha Reddy</h3>
+                    <p>Head of Operations</p>
+                    <p class="team-bio">Supply chain specialist ensuring seamless production and delivery of all our aerospace solutions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="team.html" class="btn secondary-btn">View Full Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section class="awards-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Recognitions & Awards</h2>
+                <p>Celebrating excellence in aerospace innovation</p>
+            </div>
+            
+            <div class="awards-grid">
+                <div class="award-card">
+                    <img src="https://lh4.googleusercontent.com/proxy/iSYYVzDzQtQrrWZKa_UOlV0oQmqfdyAWMSQOOuqZKp5tUYt4qXPgQFHkz3Qsg3syy_l6kcSXiUN59SmISyJ46Hxb4fBkU-iOBNb3Z9yuqgCJ9OQtqvlU8BT08gYL5AELsnWBGd-ilTU3DnZ0MMox2fTTFlmaxzIafrT_oQ-LmdPwBM2skFU" alt="National Innovation Award" class="award-logo">
+                    <h3>National Innovation Award</h3>
+                    <p>2022 - For our breakthrough in hybrid propulsion technology</p>
+                </div>
+                
+                <div class="award-card">
+                    <img src="https://marutdrones.com/wp-content/uploads/2025/01/image-9.png" alt="Drone Excellence Award" class="award-logo">
+                    <h3>Drone Excellence Award</h3>
+                    <p>2021 - Recognized for agricultural drone innovations</p>
+                </div>
+                
+                <div class="award-card">
+                    <img src="https://www.ilovephd.com/wp-content/uploads/2021/02/DST.png" alt="DST Recognition" class="award-logo">
+                    <h3>DST Research Grant</h3>
+                    <p>2020 - For sustainable aerospace research</p>
+                </div>
+                
+                <div class="award-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/DRDO_Seal.png" alt="DRDO Partnership" class="award-logo">
+                    <h3>DRDO Partnership</h3>
+                    <p>2019 - Strategic collaboration for defense applications</p>
+                </div>
+                <div class="award-card">
+                    <img src="https://contentstatic.techgig.com/photo/83229133.cms" alt="Startup India Recognition" class="award-logo">
+                    <h3>Startup India Recognition</h3>
+                    <p>2018 - Selected among top 100 deep-tech startups</p>
+                </div>
+                <div class="award-card">
+                    <img src="https://imageio.forbes.com/specials-images/imageserve/64ec36fe348f7e4b923b0616/100tw-hero-3520x2000px/0x0.jpg?format=jpg&height=2000&width=3520" alt="Forbes Asia" class="award-logo">
+                    <h3>Forbes Asia 100 to Watch</h3>
+                    <p>2023 - Listed among most promising startups in Asia-Pacific</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnerships Section -->
+    <section class="partnerships-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Partners</h2>
+                <p>Collaborating with industry leaders and academic institutions</p>
+            </div>
+            
+            <div class="partner-logos">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb54PRQgsD35Jb12CvSVQMQrkfg1iqw0q6rw&s" alt="IIT Bombay" class="partner-logo">
+                <img src="data:image/png;base64,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" alt="IISc Bangalore" class="partner-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Indian_Space_Research_Organisation_Logo.svg/2119px-Indian_Space_Research_Organisation_Logo.svg.png" alt="ISRO" class="partner-logo">
+                <img src="https://pbs.twimg.com/profile_images/1446023642131750915/cOjZpCxG_400x400.jpg" alt="Indian Space Association" class="partner-logo">
+                <img src="data:image/jpeg;base64,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" alt="DRDO" class="partner-logo">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAACvCAMAAABqzPMLAAABVlBMVEX//////v////3///v9/v///P////n9//7//f3///f///b//P39//38/f///fv//voFP6sANKjf5ez/+f8AN6gDQasGP68AOKUDQKYAMK4AOKEAPK3d4uz6//oALqYALaUARKEAO7GSoNEAK6wAO58DQ7D///EAObPv8/uvvtkAPpYANKGRnNQtVKcANrcAOLAAMcAAIaJsgrgALaCZp8yotdO3yeMARqvd4vTx8fu7xNPh6+F+lMF/isrK3PNKZLN2j8i5ytFac8AuUqxzi7Nmf7zH2+Vpgc07U7ZxksVZf65fcbSkwd84WJpAZrHI3OKVnNmcp9Kkq8+So8EZW6oyWrEiSplHaq6aqt2Fnsrf5/dzhM4pSaFRd7R4m8G+1u7DyeTZ8uM+cMBJcKVYaLW1uNirv9EcQozc3/q70vKYpK84U8Bldp+Uo8Po6OrFxOgALY20ucs7tbO3AAAUP0lEQVR4nO2b7V/bRrbHRzOSxpJGD36QLFseI2HLyDiGBj8ICMU0Lm7SNHBJQigsJOy2ze7ee8N2//8394xNssk22dvwJmky308CtjQajY7OnPM7I4GQRCKRSCQSiUQikUgkEolEIpFIJBKJRCKRSCQSiUQikUgkEolEIpFIJBKJRCKRSCQSiUQikUgkEolEIpFIJBKJREARxvPfysceyScK1g3HpqrtFjL+scfyKaJYukqJreOt7TsfeyyfJETXiOGahe2dkiUn2TtQGdhHzU6/3tIZ+diD+SQhhTLanext6Q76smMQpCqRrt6eRgrCtsWGq7coZ46mfaShfRpgW3MhHqsIZbPL8Xi83cg4sShXtjbqp3JyIcrKGrEx6nyzc3ca9qr1cPrg229spJTuDpa39I89vE8A1TQxKi3nwfH+j93d2Ww8/O5ecfVlN6+PdNv92KP7BHAc1R5N471xiRGduAQUYta9v+pVl5FrqB97dB8ftYyy/d73mxlkK2opbkHRnI69E9fbD7Yw/135C19zXZv8rrbvbPnu7fMsgv+93f93Koyv+/udA3sXCmIQg3jj/MkP8Mmmum4QTYEf9Lvi4MfR9MmsrCgUwvd7u1cUhhGFJgJKbXv+CYnPMDyVMdGIYLTogcEG1VYXQAOkYgytKTSg0AskCttmr/eq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" alt="Boeing" class="partner-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Partners Say</h2>
+                <p>Trusted by leading organizations worldwide</p>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    <p>Wings of Aero's UAV technology has revolutionized our agricultural monitoring processes. Their systems have helped us increase crop yields by 22% while reducing water usage by 15% across our farms. The team's responsiveness and technical expertise made the implementation seamless.</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Rajesh Kumar">
+                    <div class="author-info">
+                        <h4>Rajesh Kumar</h4>
+                        <p>CTO, GreenFields Agritech</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card" style="margin-top: 40px;">
+                <div class="testimonial-text">
+                    <p>The aerospace training program from Wings of Aero provided our engineering students with unparalleled hands-on experience. Their curriculum bridges the gap between academia and industry like no other program we've seen. 90% of participating students received job offers within three months of completing the course.</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Dr. Priya Sharma">
+                    <div class="author-info">
+                        <h4>Dr. Priya Sharma</h4>
+                        <p>Professor, IIT Bombay</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card" style="margin-top: 40px;">
+                <div class="testimonial-text">
+                    <p>As an investor in deep-tech startups, I've been consistently impressed by Wings of Aero's technical capabilities and market traction. Their hybrid propulsion system represents one of the most significant innovations I've seen in regional air mobility. The team combines technical brilliance with strong business acumen.</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Amit Patel">
+                    <div class="author-info">
+                        <h4>Amit Patel</h4>
+                        <p>Managing Partner, Skyline Ventures</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Join the Aerospace Revolution?</h2>
+                <p>Whether you're looking for innovative solutions or quality education, we're here to help you soar to new heights.</p>
+                <div class="cta-btns">
+                    <a href="services.html" class="btn primary-btn">Our Services</a>
+                    <a href="contact.html" class="btn secondary-btn">Contact Us</a>
+                    <a href="careers.html" class="btn secondary-btn">Careers</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <img src="https://wingsofaero.in/wp-content/uploads/2023/03/oie_transparent-300x63.png" alt="Wings of Aero Logo" class="footer-logo">
+                    <p>Innovating the future of aerospace technology through research, development, and education.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Aerospace Avenue, Bangalore, India</li>
+                        <li><i class="fas fa-phone"></i> +91 9876543210</li>
+                        <li><i class="fas fa-envelope"></i> info@wingsofaero.com</li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for the latest updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn primary-btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">Sitemap</a>
+                </div>
+                <p class="copyright">&copy; 2023 Wings of Aero. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.navbar').classList.toggle('active');
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.header').classList.add('scrolled');
+            } else {
+                document.querySelector('.header').classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.navbar').classList.remove('active');
+                }
+            });
+        });
+
+        // Animate timeline items when they come into view
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        timelineItems.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'all 0.5s ease';
+            timelineObserver.observe(item);
+        });
+
+        // Animate value cards with staggered delay
+        const valueCards = document.querySelectorAll('.value-card');
+        
+        valueCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `all 0.5s ease ${index * 0.1}s`;
+        });
+        
+        const valuesObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    valueCards.forEach(card => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
+
+        valuesObserver.observe(document.querySelector('.values-grid'));
+
+        // Animate tech cards
+        const techCards = document.querySelectorAll('.tech-card');
+        
+        techCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `all 0.5s ease ${index * 0.1}s`;
+        });
+        
+        const techObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    techCards.forEach(card => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
+
+        techObserver.observe(document.querySelector('.tech-grid'));
+
+        // Animate team members
+        const teamMembers = document.querySelectorAll('.team-member');
+        
+        teamMembers.forEach((member, index) => {
+            member.style.opacity = '0';
+            member.style.transform = 'translateY(20px)';
+            member.style.transition = `all 0.5s ease ${index * 0.1}s`;
+        });
+        
+        const teamObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    teamMembers.forEach(member => {
+                        member.style.opacity = '1';
+                        member.style.transform = 'translateY(0)';
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
+
+        teamObserver.observe(document.querySelector('.team-grid'));
+    </script>
+</body>
+</html>
