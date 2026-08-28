@@ -1958,3 +1958,300 @@ footer .social-links li + li {
   }
 }
 /*# sourceMappingURL=style.css.map */
+
+/* =========================================================
+   Santosh Kale Portfolio - Professional Enhancements
+   ========================================================= */
+
+:root {
+  --portfolio-accent: #1788ae;
+  --portfolio-accent-light: #2694d4;
+  --portfolio-card: #191919;
+  --portfolio-border: rgba(255, 255, 255, 0.12);
+}
+
+/* Better global typography */
+body {
+  line-height: 1.6;
+}
+
+/* Professional project details */
+.work-section .project .project-details {
+  padding: 1rem 0;
+}
+
+.work-section .project .project-details h3 {
+  font-size: 2.1rem;
+  line-height: 1.2;
+  margin-bottom: 0.35rem;
+}
+
+.work-section .project .project-details span {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 1rem;
+}
+
+.work-section .project .project-details p {
+  line-height: 1.75;
+  max-width: 650px;
+}
+
+/* Technology badges */
+.work-section .project .project-details ul {
+  gap: 0.45rem;
+  margin: 1rem 0;
+}
+
+.work-section .project .project-details ul li {
+  background: rgba(23, 136, 174, 0.08);
+  border: 1px solid rgba(23, 136, 174, 0.35);
+  padding: 0.35rem 0.75rem;
+  margin: 0;
+  font-size: 0.8rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.work-section .project .project-details ul li:hover {
+  transform: translateY(-2px);
+  border-color: var(--portfolio-accent-light);
+}
+
+/* GitHub / Live Demo buttons */
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.2rem;
+}
+
+.project-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.project-actions a:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.project-actions .github-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--light);
+}
+
+.project-actions .demo-btn {
+  background: var(--portfolio-accent);
+  color: var(--light);
+}
+
+/* Featured project styling */
+.work-section .featured-project {
+  position: relative;
+}
+
+.work-section .featured-project::before {
+  content: "FEATURED PROJECT";
+  position: absolute;
+  top: -0.8rem;
+  left: 1rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+  background: var(--portfolio-accent);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  z-index: 10;
+}
+
+/* Hero improvements */
+.main-section .hero-section .hero-section-text .hero-content p {
+  max-width: 720px;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+/* Better focus accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--portfolio-accent-light);
+  outline-offset: 3px;
+}
+
+/* Mobile improvements */
+@media (max-width: 650px) {
+  .main-section {
+    min-height: 100vh;
+    height: auto;
+  }
+
+  .main-section .hero-section {
+    width: 92%;
+  }
+
+  .main-section .hero-section .hero-section-text .hero-content {
+    width: 92%;
+    padding: 0 0.5rem;
+  }
+
+  .main-section .hero-section .hero-section-text .hero-content p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .work-section .project .project-details h3 {
+    font-size: 1.7rem;
+  }
+
+  .work-section .project .project-details p {
+    text-align: left;
+    line-height: 1.65;
+  }
+
+  .project-actions {
+    justify-content: center;
+  }
+
+  .project-actions a {
+    min-width: 120px;
+  }
+
+  .work-section .featured-project::before {
+    position: static;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 400px) {
+  .project-actions {
+    flex-direction: column;
+  }
+
+  .project-actions a {
+    width: 100%;
+  }
+}
+
+/* =========================================
+   HOME PAGE - MODERN NAVIGATION
+========================================= */
+
+.home-nav-link {
+  color: #ffffff;
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  padding: 8px 4px;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.home-nav-link:hover {
+  color: #1595b6;
+  transform: translateY(-2px);
+}
+
+
+.github-top-link {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+
+  font-size: 18px;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.github-top-link:hover {
+  color: #1595b6;
+  transform: translateY(-3px);
+}
+
+
+.theme-toggler {
+  cursor: pointer;
+}
+
+
+.theme-toggler img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.theme-toggler:hover img {
+  transform: rotate(20deg);
+}
+
+
+/* =========================================
+   HOME HERO TYPOGRAPHY
+========================================= */
+
+.hero-role {
+  margin-top: 12px;
+
+  font-size: 1.25rem;
+  font-weight: 600;
+
+  color: #ffffff;
+}
+
+
+.hero-tech {
+  margin-top: 8px;
+
+  font-size: 0.92rem;
+
+  line-height: 1.7;
+
+  color: rgba(255, 255, 255, 0.78);
+}
+
+
+/* =========================================
+   HOME NAV MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+  .home-nav-link {
+    display: none;
+  }
+
+  .github-top-link {
+    display: none;
+  }
+
+  .theme-toggler {
+    display: flex !important;
+  }
+
+}
